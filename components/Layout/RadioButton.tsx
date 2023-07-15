@@ -1,28 +1,27 @@
-import React from "react";
+"use client";
+import React, { ChangeEvent, ChangeEventHandler } from "react";
 
-type RadioButtonProps = {};
+type RadioButtonProps = {
+  type: "metric" | "imperial";
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
-const RadioButton: React.FC<RadioButtonProps> = () => {
+const RadioButton: React.FC<RadioButtonProps> = ({ type, onChange }) => {
   return (
     <>
-      <form>
+      <div className="flex">
         <input
           type="radio"
-          id="weight"
-          placeholder="0"
-          className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
- focus:border-blue active:border-blue"
+          id={type}
+          name="metric-type"
+          // name="metric-type"
+          className="mr-4 accent-blue w-[31px]"
+          onChange={onChange}
         />
-        <label htmlFor="weight">Clik</label>
-        <input
-          type="radio"
-          id="metric"
-          placeholder="0"
-          className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
- focus:border-blue active:border-blue"
-        />
-        <label htmlFor="metric">Clik</label>
-      </form>
+        <label htmlFor={type} className="text-Body-M capitalize">
+          {type}
+        </label>
+      </div>
     </>
   );
 };
