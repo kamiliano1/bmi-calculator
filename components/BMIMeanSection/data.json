@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Healthy eating",
+    "body": "Healthy eating promotes weight control, disease prevention, better digestion, immunity, mental clarity, and mood.",
+    "image": "/assets/images/icon-eating.svg",
+    "alt": "eating bowl"
+  },
+  {
+    "title": "Regular exercise",
+    "body": "Exercise improves fitness, aids weight control, elevates mood, and reduces disease risk, fostering wellness and longevity.",
+    "image": "/assets/images/icon-exercise.svg",
+    "alt": "yellow dumbbell"
+  },
+  {
+    "title": "Adequate sleep",
+    "body": "Sleep enhances mental clarity, emotional stability, and physical wellness, promoting overall restoration and rejuvenation.",
+    "image": "/assets/images/icon-sleep.svg",
+    "alt": "moon icon"
+  }
+]

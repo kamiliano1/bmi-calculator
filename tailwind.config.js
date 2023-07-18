@@ -30,6 +30,14 @@ module.exports = {
           letterSpacing: "-2.4px",
         },
       ],
+      XM: [
+        "2rem",
+        {
+          lineHeight: "110%",
+          fontWeight: "600",
+          letterSpacing: "-1.6px",
+        },
+      ],
       M: [
         "1.5rem",
         {
