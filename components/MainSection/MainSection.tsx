@@ -66,20 +66,26 @@ const MainSection: React.FC = () => {
     }
   }, [bmi, userBmi]);
   return (
-    <main className="px-6 text-center mt-2">
-      <Image src={Logo} alt="page logo" className="mx-auto py-6 w-[40px]" />
-      <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto">
-        Body Mass Index Calculator
-      </h1>
-      <p className="mb-12">
-        Better understand your weight in relation to your height using our body
-        mass index (BM) calculator. While BMI is not the sole determinant of a
-        healthy weight, it offers a valuable starting point to evaluate your
-        overall health and well-being.
-      </p>
-      <form className="bg-white p-6 rounded-2xl">
+    <main className="px-6 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto">
+      <Image
+        src={Logo}
+        alt="page logo"
+        className="mx-auto py-6 w-[40px] bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] lg:w-[60px] lg:mx-0"
+      />
+      <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2">
+        <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none">
+          Body Mass Index Calculator
+        </h1>
+        <p className="mb-12">
+          Better understand your weight in relation to your height using our
+          body mass index (BM) calculator. While BMI is not the sole determinant
+          of a healthy weight, it offers a valuable starting point to evaluate
+          your overall health and well-being.
+        </p>
+      </div>
+      <form className="bg-white p-6 sm:p-8 rounded-2xl  lg:col-start-2 lg:row-start-2">
         <h3 className="sm:text-start">Enter your details below</h3>
-        <div className="flex justify-between py-6">
+        <div className="flex justify-between py-6 sm:gap-x-6">
           <div className="flex w-full">
             <input
               type="radio"
@@ -105,8 +111,8 @@ const MainSection: React.FC = () => {
             </label>
           </div>
         </div>
-        <div className="sm:flex sm:justify-between">
-          <div>
+        <div className="sm:flex sm:justify-between sm:gap-x-6">
+          <div className="w-full">
             <h3 className="capitalize text-Body-S text-start mb-2 text-[#5E6E85]">
               height
             </h3>
@@ -143,7 +149,7 @@ const MainSection: React.FC = () => {
               )}
             </div>
           </div>
-          <div>
+          <div className="w-full">
             <h3 className="capitalize text-Body-S text-start mb-2 text-[#5E6E85]">
               weight
             </h3>
