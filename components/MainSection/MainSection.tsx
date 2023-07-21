@@ -4,17 +4,6 @@ import TextField from "@/components/Layout/TextField";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 import Logo from "../../public/assets/images/logo.svg";
 import Image from "next/image";
-// type BmiType = {
-//   height: {
-//     cmFt: number;
-//     in: number;
-//   };
-//   weight: {
-//     kgSt: number;
-//     lbs: number;
-//   };
-//   metric: "imperial" | "metric";
-// };
 
 type BmiType = {
   cmFt: number;
@@ -26,10 +15,10 @@ type BmiType = {
 
 type BmiStatusType = "underweight" | "healthy weight" | "overweight" | "obese";
 
-type suggestedWeightType = {
-  minValue: string;
-  maxValue: string;
-};
+// type suggestedWeightType = {
+//   minValue: string;
+//   maxValue: string;
+// };
 
 const MainSection: React.FC = () => {
   const [bmi, setBmi] = useState<BmiType>({
@@ -42,44 +31,61 @@ const MainSection: React.FC = () => {
   const [userBmi, setUserBmi] = useState<number>(0);
   const [bmiStatus, setBmiStatus] = useState<BmiStatusType>("underweight");
   const [suggestedWeight, setSuggestedWeight] = useState<string>("");
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const [isEmpty, setIsEmpty] = useState<boolean>(true);
+  const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, id } = e.target;
-    setBmi((prev) =>
-      !id.length ? { ...prev, [name]: value } : { ...prev, [name]: id }
-    );
+    setBmi((prev) => ({ ...prev, [name]: Number(value) }));
   };
-  const roundNumber = (num: number) => {
-    return Math.round(num * 1e2) / 1e2;
-  };
-  const suggestedWeightRange = (metricType: "metric" | "imperial") => {
-    // console.log(bmiStatus, metricType);
-    if (metricType === "metric") {
-      const minValue = roundNumber(18.5 * (bmi.cmFt / 100) ** 2);
-      const maxValue = roundNumber(24.9 * (bmi.cmFt / 100) ** 2);
-      setSuggestedWeight(`${minValue}kgs - ${maxValue}kgs.`);
-      return;
+  const onRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, id } = e.target;
+    setBmi((prev) => ({ ...prev, [name]: id }));
+    if (bmi.metric === "imperial") {
+      setBmi((prev) => ({
+        ...prev,
+        cmFt: fromImperialToMetricHeight(bmi.cmFt, bmi.in),
+        kgSt: fromImperialToMetricWeight(bmi.kgSt, bmi.lbs),
+      }));
     }
-    const inches = Number(bmi.cmFt) * 12 + Number(bmi.in);
-    const minValue = (18.5 * inches ** 2) / 703;
-    const maxValue = (24.9 * inches ** 2) / 703;
-    const feetsMin = Math.floor(minValue / 2.54 / 12);
-    const inchesMin = roundNumber(minValue / 2.54 - feetsMin * 12);
-    const feetsMax = Math.floor(maxValue / 2.54 / 12);
-    const inchesMax = roundNumber(maxValue / 2.54 - feetsMax * 12);
-
-    setSuggestedWeight(
-      `${feetsMin}st ${inchesMin}lbs - ${feetsMax}st ${inchesMax}lbs.`
-    );
+    if (bmi.metric === "metric") {
+      setBmi((prev) => ({
+        ...prev,
+        cmFt: fromMetricToImperialHeight(bmi.cmFt).cmFt,
+        in: fromMetricToImperialHeight(bmi.cmFt).in,
+        kgSt: fromMetricToImperialWeight(bmi.kgSt).kgSt,
+        lbs: fromMetricToImperialWeight(bmi.kgSt).lbs,
+      }));
+    }
   };
-  //   - Underweight: BMI less than 18.5
-  // - Healthy weight: BMI 18.5 to 24.9
-  // - Overweight: BMI 25 to 29.9
-  // - Obese: BMI 30 or greater
+  const roundNumber = (num: number, round = 1e2) => {
+    return Math.round(num * round) / round;
+  };
+  // const suggestedWeightRange = (metricType: "metric" | "imperial") => {
+  //   // console.log(bmiStatus, metricType);
+  //   if (metricType === "metric") {
+  //     const minValue = roundNumber(18.5 * (bmi.cmFt / 100) ** 2);
+  //     const maxValue = roundNumber(24.9 * (bmi.cmFt / 100) ** 2);
+  //     setSuggestedWeight(`${minValue}kgs - ${maxValue}kgs.`);
+  //     return;
+  //   }
+  //   const inches = Number(bmi.cmFt) * 12 + Number(bmi.in);
+  //   const minValue = (18.5 * inches ** 2) / 703;
+  //   const maxValue = (24.9 * inches ** 2) / 703;
+  //   const feetsMin = Math.floor(minValue / 2.54 / 12);
+  //   const inchesMin = roundNumber(minValue / 2.54 - feetsMin * 12);
+  //   const feetsMax = Math.floor(maxValue / 2.54 / 12);
+  //   const inchesMax = roundNumber(maxValue / 2.54 - feetsMax * 12);
+
+  //   setSuggestedWeight(
+  //     `${feetsMin}st ${inchesMin}lbs - ${feetsMax}st ${inchesMax}lbs.`
+  //   );
+  // };
+
+  // Healthy weight: BMI 18.5 to 24.9
   useEffect(() => {
     if (bmi.metric === "metric") {
       setUserBmi(bmi.kgSt / (bmi.cmFt / 100) ** 2);
-      const minValue = roundNumber(18.5 * (bmi.cmFt / 100) ** 2);
-      const maxValue = roundNumber(24.9 * (bmi.cmFt / 100) ** 2);
+      const minValue = roundNumber(18.5 * (bmi.cmFt / 100) ** 2, 1e1);
+      const maxValue = roundNumber(24.9 * (bmi.cmFt / 100) ** 2, 1e1);
       setSuggestedWeight(`${minValue}kgs - ${maxValue}kgs.`);
     } else {
       const inches = Number(bmi.cmFt) * 12 + Number(bmi.in);
@@ -87,13 +93,12 @@ const MainSection: React.FC = () => {
       setUserBmi((pounds / inches ** 2) * 703);
       const minValue = (18.5 * inches ** 2) / 703;
       const maxValue = (24.9 * inches ** 2) / 703;
-      const feetsMin = Math.floor(minValue / 2.54 / 12);
-      const inchesMin = roundNumber(minValue / 2.54 - feetsMin * 12);
-      const feetsMax = Math.floor(maxValue / 2.54 / 12);
-      const inchesMax = roundNumber(maxValue / 2.54 - feetsMax * 12);
-
+      const stonesMin = Math.floor(minValue / 14);
+      const inchesMin = roundNumber(minValue - stonesMin * 14, 1);
+      const stonesMax = Math.floor(maxValue / 14);
+      const inchesMax = roundNumber(maxValue - stonesMax * 14, 1);
       setSuggestedWeight(
-        `${feetsMin}st ${inchesMin}lbs - ${feetsMax}st ${inchesMax}lbs.`
+        `${stonesMin}st ${inchesMin}lbs - ${stonesMax}st ${inchesMax}lbs.`
       );
     }
     if (userBmi < 18.5) setBmiStatus("underweight");
@@ -102,6 +107,15 @@ const MainSection: React.FC = () => {
     else {
       setBmiStatus("obese");
     }
+    if (
+      (bmi.metric === "metric" && (bmi.cmFt === 0 || bmi.kgSt === 0)) ||
+      (bmi.metric === "imperial" &&
+        (bmi.cmFt === 0 || bmi.kgSt === 0 || bmi.in === 0 || bmi.lbs === 0))
+    ) {
+      setIsEmpty(true);
+      return;
+    }
+    setIsEmpty(false);
   }, [bmi, userBmi]);
   const fromMetricToImperialHeight = (cm: number) => {
     const feets = Math.floor(cm / 2.54 / 12);
@@ -120,33 +134,14 @@ const MainSection: React.FC = () => {
   const fromImperialToMetricWeight = (st: number, lbs: number) => {
     return roundNumber((Number(st) * 14 + Number(lbs)) / 2.2);
   };
-  useEffect(() => {
-    if (bmi.metric === "metric") {
-      setBmi((prev) => ({
-        ...prev,
-        cmFt: fromImperialToMetricHeight(bmi.cmFt, bmi.in),
-        kgSt: fromImperialToMetricWeight(bmi.kgSt, bmi.lbs),
-      }));
-    }
-    if (bmi.metric === "imperial") {
-      setBmi((prev) => ({
-        ...prev,
-        cmFt: fromMetricToImperialHeight(bmi.cmFt).cmFt,
-        in: fromMetricToImperialHeight(bmi.cmFt).in,
-        kgSt: fromMetricToImperialWeight(bmi.kgSt).kgSt,
-        lbs: fromMetricToImperialWeight(bmi.kgSt).lbs,
-      }));
-    }
-  }, [bmi.metric]);
+
   return (
-    <main className="px-6 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto">
-      <button onClick={() => suggestedWeightRange(bmi.metric)}>
-        suggestedWeightRange
-      </button>
+    <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto">
+      <div className="absolute test w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[737px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
         alt="page logo"
-        className="mx-auto py-6 w-[40px] bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] lg:w-[60px] lg:mx-0"
+        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[60px] lg:mx-0"
       />
       <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2">
         <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none">
@@ -169,7 +164,7 @@ const MainSection: React.FC = () => {
               id="metric"
               name="metric"
               className="mr-4 accent-blue w-[31px]"
-              onChange={onChange}
+              onChange={onRadioChange}
               checked={bmi.metric === "metric"}
             />
             <label htmlFor="metric" className="text-Body-M-Bold capitalize">
@@ -182,7 +177,7 @@ const MainSection: React.FC = () => {
               id="imperial"
               name="metric"
               className="mr-4 accent-blue w-[31px]"
-              onChange={onChange}
+              onChange={onRadioChange}
               checked={bmi.metric === "imperial"}
             />
             <label htmlFor="imperial" className="text-Body-M-Bold capitalize">
@@ -198,7 +193,7 @@ const MainSection: React.FC = () => {
             <div className="flex w-full gap-x-4 mb-4 ">
               <div className="relative h-full">
                 <input
-                  onChange={onChange}
+                  onChange={onInputChange}
                   type="text"
                   name="cmFt"
                   placeholder="0"
@@ -214,7 +209,7 @@ const MainSection: React.FC = () => {
               {bmi.metric === "imperial" && (
                 <div className="relative h-full">
                   <input
-                    onChange={onChange}
+                    onChange={onInputChange}
                     type="text"
                     name="in"
                     placeholder="0"
@@ -236,7 +231,7 @@ const MainSection: React.FC = () => {
             <div className="flex w-full gap-x-4 mb-6">
               <div className="relative h-full">
                 <input
-                  onChange={onChange}
+                  onChange={onInputChange}
                   type="text"
                   name="kgSt"
                   placeholder="0"
@@ -251,7 +246,7 @@ const MainSection: React.FC = () => {
               {bmi.metric === "imperial" && (
                 <div className="relative h-full">
                   <input
-                    onChange={onChange}
+                    onChange={onInputChange}
                     type="text"
                     name="lbs"
                     placeholder="0"
@@ -269,14 +264,27 @@ const MainSection: React.FC = () => {
         </div>
 
         <div className="bg-[linear-gradient(90deg,_#345FF6_0%,_#587DFF_100%)] sm:rounded-r-full text-white p-8 text-start rounded-2xl sm:flex items-center justify-between">
-          <div>
-            <h3 className="text-white text-Body-M-Bold mb-2">Your BMI is...</h3>
-            <p className="text-white text-L mb-6">{userBmi.toFixed(1)}</p>
-          </div>
-          <p className="text-white text-Body-S max-w-[267px]">
-            Your BMI suggests you`re a {bmiStatus}. Your ideal weight is between{" "}
-            <span className="font-bold">{suggestedWeight}</span>
-          </p>
+          {isEmpty ? (
+            <div>
+              <h3 className="text-white mb-4">Welcome!</h3>
+              <p className="text-white text-Body-S">
+                Enter your height and weight and you`ll see your BMI result here
+              </p>
+            </div>
+          ) : (
+            <>
+              <div>
+                <h5 className="text-white text-Body-M-Bold mb-2">
+                  Your BMI is...
+                </h5>
+                <p className="text-white text-L mb-6">{userBmi.toFixed(1)}</p>
+              </div>
+              <p className="text-white text-Body-S max-w-[267px]">
+                Your BMI suggests you`re a {bmiStatus}. Your ideal weight is
+                between <span className="font-bold">{suggestedWeight}</span>
+              </p>
+            </>
+          )}
         </div>
       </form>
     </main>
