@@ -136,8 +136,8 @@ const MainSection: React.FC = () => {
   };
 
   return (
-    <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto">
-      <div className="absolute test w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[737px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
+    <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative">
+      <div className="absolute test w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[630px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
         alt="page logo"
