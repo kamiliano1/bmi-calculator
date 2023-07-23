@@ -159,7 +159,7 @@ const MainSection: React.FC = () => {
       <Image
         src={Logo}
         alt="page logo"
-        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[60px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[3.75rem]"
+        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[64px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[3.75rem]"
       />
       <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2">
         <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none">
@@ -173,9 +173,9 @@ const MainSection: React.FC = () => {
           your overall health and well-being.
         </p>
       </div>
-      <form className="bg-white p-6 sm:p-8  rounded-2xl lg:col-start-2 lg:row-start-2">
+      <form className="bg-white p-6 sm:p-8   rounded-2xl lg:col-start-2 lg:row-start-2">
         <h3 className="sm:text-start">Enter your details below</h3>
-        <div className="flex justify-between py-6 sm:gap-x-6">
+        <div className="flex justify-between py-6 sm:py-8 sm:gap-x-6">
           <div className="flex w-full">
             <input
               type="radio"
