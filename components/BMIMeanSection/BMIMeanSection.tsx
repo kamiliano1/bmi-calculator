@@ -8,13 +8,14 @@ import data from "./data.json";
 type BMIMeanSectionProps = {};
 const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
   return (
-    <section className="px-6 sm:px-10 mb-32 sm:mt-24 max-w-[1440px] mx-auto lg:flex lg:flex-col lg:px-[clamp(2.5rem,_10vw,_8.75rem)]">
-      <div className="sm:flex mb-32 sm:items-center lg:gap-x-[clamp(5rem,_10vw,_131px)]">
+    <section className="px-6 sm:px-10 mb-32 sm:mt-24 max-w-[1440px] mx-auto lg:flex lg:flex-col lg:px-[clamp(2.5rem,_10vw,_8.75rem)] ">
+      <div className="sm:flex mb-32 sm:items-center lg:gap-x-[clamp(5rem,_10vw,_131px)] lg:justify-between">
         <Image
           src={ManEating}
           alt="man eating sushi"
           // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-auto lg:h-auto lg:ml-0 lg:py-0"
-          className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-full  lg:ml-0 lg:py-0 lg:mx-0"
+          className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[468px] lg:h-[533px]  lg:ml-0 lg:py-0 lg:mx-0"
+          // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-full  lg:ml-0 lg:py-0 lg:mx-0"
           // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[578px] lg:h-[633px] lg:ml-0 lg:py-0 lg:mx-0"
         />
         <div className="sm:max-w-[331px] lg:max-w-[465px]">

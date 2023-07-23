@@ -27,7 +27,7 @@ const TextField: React.FC<TextFieldProps> = ({ type, onChange, bmi }) => {
           className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
          focus:border-blue active:border-blue"
         />
-        <p className="absolute text-M text-blue top-[calc(0px_+_9px)] right-[1.5rem]">
+        <p className="absolute text-M text-blue top-[calc(0px_+_10px)] right-[1.5rem]">
           {" "}
           {type === "height" ? "cm" : "kg"}
         </p>

@@ -22,14 +22,14 @@ const BMILimiatationsElement: React.FC<BMILimiatationsElementProps> = ({
           ? " lgs:ml-[clamp(1rem,_19vw,_25rem)] lg:basis-[730px]"
           : "lg:basis-[365px]"
       }  ${
-        title === "Pregnancy" && " lgs:ml-[clamp(1rem,_10vw,_12.4375rem)]"
+        title === "Pregnancy" && " lg:ml-[clamp(1rem,_10vw,_12.4375rem)]"
       } sm:basis-[335px] flex`}
     >
       {title === "Age" && (
         <Image
           src={CurvedLine}
           alt="curved Line"
-          className="hidden lg:block mr-[150px] mb-9 bg-gunMetal"
+          className="hidden lg:block ml-[140px] mr-[150px] mb-9 "
         />
       )}
       <div className="lg:basis-[365px]">

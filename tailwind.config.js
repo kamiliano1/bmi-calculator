@@ -6,13 +6,13 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      blue: "hsl(227, 92%, 58%)",
-      gunMetal: "hsl(215, 31%, 21%)",
-      darkElectricBlue: "hsl(215, 17%, 45%)",
-      borders: "hsl(200, 24%, 88%)",
-      white: "hsl(0, 0%, 100%)",
-    },
+    // colors: {
+    //   blue: "hsl(227, 92%, 58%)",
+    //   gunMetal: "hsl(215, 31%, 21%)",
+    //   darkElectricBlue: "hsl(215, 17%, 45%)",
+    //   borders: "hsl(200, 24%, 88%)",
+    //   white: "hsl(0, 0%, 100%)",
+    // },
     fontSize: {
       XL: [
         "4rem",
@@ -76,7 +76,15 @@ module.exports = {
         },
       ],
     },
-    extend: {},
+    extend: {
+      colors: {
+        blue: "hsl(227, 92%, 58%)",
+        gunMetal: "hsl(215, 31%, 21%)",
+        darkElectricBlue: "hsl(215, 17%, 45%)",
+        borders: "hsl(200, 24%, 88%)",
+        white: "hsl(0, 0%, 100%)",
+      },
+    },
   },
   plugins: [],
 };

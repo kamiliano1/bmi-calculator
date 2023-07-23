@@ -29,12 +29,30 @@ const MainSection: React.FC = () => {
     metric: "metric",
   });
   const [userBmi, setUserBmi] = useState<number>(0);
+  const [keyCode, setKeyCode] = useState<string>("");
   const [bmiStatus, setBmiStatus] = useState<BmiStatusType>("underweight");
   const [suggestedWeight, setSuggestedWeight] = useState<string>("");
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value, id } = e.target;
-    setBmi((prev) => ({ ...prev, [name]: Number(value) }));
+    const numbersArray = [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      ".",
+      "Backspace",
+    ];
+    // console.log(keyCode);
+    // console.log(numbersArray.includes(keyCode));
+    const { name, value } = e.target;
+    if (numbersArray.includes(keyCode))
+      setBmi((prev) => ({ ...prev, [name]: Number(value) }));
   };
   const onRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, id } = e.target;
@@ -136,8 +154,8 @@ const MainSection: React.FC = () => {
   };
 
   return (
-    <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative">
-      <div className="absolute test w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[630px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
+    <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
+      <div className="absolute  w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[630px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
         alt="page logo"
@@ -155,7 +173,7 @@ const MainSection: React.FC = () => {
           your overall health and well-being.
         </p>
       </div>
-      <form className="bg-white p-6 sm:p-8 rounded-2xl  lg:col-start-2 lg:row-start-2">
+      <form className="bg-white p-6 sm:p-8  rounded-2xl lg:col-start-2 lg:row-start-2">
         <h3 className="sm:text-start">Enter your details below</h3>
         <div className="flex justify-between py-6 sm:gap-x-6">
           <div className="flex w-full">
@@ -163,11 +181,14 @@ const MainSection: React.FC = () => {
               type="radio"
               id="metric"
               name="metric"
-              className="mr-4 accent-blue w-[31px]"
+              className="mr-4 accent-blue w-[31px] aspect-square cursor-pointer"
               onChange={onRadioChange}
               checked={bmi.metric === "metric"}
             />
-            <label htmlFor="metric" className="text-Body-M-Bold capitalize">
+            <label
+              htmlFor="metric"
+              className="text-Body-M-Bold capitalize cursor-pointer"
+            >
               metric
             </label>
           </div>
@@ -176,11 +197,14 @@ const MainSection: React.FC = () => {
               type="radio"
               id="imperial"
               name="metric"
-              className="mr-4 accent-blue w-[31px]"
+              className="mr-4 accent-blue w-[31px] cursor-pointer"
               onChange={onRadioChange}
               checked={bmi.metric === "imperial"}
             />
-            <label htmlFor="imperial" className="text-Body-M-Bold capitalize">
+            <label
+              htmlFor="imperial"
+              className="text-Body-M-Bold capitalize cursor-pointer"
+            >
               imperial
             </label>
           </div>
@@ -194,6 +218,8 @@ const MainSection: React.FC = () => {
               <div className="relative h-full">
                 <input
                   onChange={onInputChange}
+                  onKeyDown={(e) => setKeyCode(e.key)}
+                  onFocus={(e) => e.target.select()}
                   type="text"
                   name="cmFt"
                   placeholder="0"
@@ -202,7 +228,7 @@ const MainSection: React.FC = () => {
                   className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                 />
-                <p className="absolute text-M text-blue top-[calc(0px_+_9px)] right-[1.5rem]">
+                <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
                   {bmi.metric === "metric" ? "cm" : "ft"}
                 </p>
               </div>
@@ -210,6 +236,8 @@ const MainSection: React.FC = () => {
                 <div className="relative h-full">
                   <input
                     onChange={onInputChange}
+                    onKeyDown={(e) => setKeyCode(e.key)}
+                    onFocus={(e) => e.target.select()}
                     type="text"
                     name="in"
                     placeholder="0"
@@ -217,7 +245,7 @@ const MainSection: React.FC = () => {
                     className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                   />
-                  <p className="absolute text-M text-blue top-[calc(0px_+_9px)] right-[1.5rem]">
+                  <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
                     in
                   </p>
                 </div>
@@ -232,6 +260,8 @@ const MainSection: React.FC = () => {
               <div className="relative h-full">
                 <input
                   onChange={onInputChange}
+                  onKeyDown={(e) => setKeyCode(e.key)}
+                  onFocus={(e) => e.target.select()}
                   type="text"
                   name="kgSt"
                   placeholder="0"
@@ -239,7 +269,7 @@ const MainSection: React.FC = () => {
                   className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                 />
-                <p className="absolute text-M text-blue top-[calc(0px_+_9px)] right-[1.5rem]">
+                <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
                   {bmi.metric === "metric" ? "kg" : "st"}
                 </p>
               </div>
@@ -247,6 +277,8 @@ const MainSection: React.FC = () => {
                 <div className="relative h-full">
                   <input
                     onChange={onInputChange}
+                    onKeyDown={(e) => setKeyCode(e.key)}
+                    onFocus={(e) => e.target.select()}
                     type="text"
                     name="lbs"
                     placeholder="0"
@@ -254,7 +286,7 @@ const MainSection: React.FC = () => {
                     className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                   />
-                  <p className="absolute text-M text-blue top-[calc(0px_+_9px)] right-[1.5rem]">
+                  <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
                     lbs
                   </p>
                 </div>
