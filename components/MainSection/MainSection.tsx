@@ -155,11 +155,11 @@ const MainSection: React.FC = () => {
 
   return (
     <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
-      <div className="absolute  w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[630px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
+      <div className="absolute w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[630px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
         alt="page logo"
-        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[60px] lg:mx-0"
+        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[60px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[3.75rem]"
       />
       <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2">
         <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none">
