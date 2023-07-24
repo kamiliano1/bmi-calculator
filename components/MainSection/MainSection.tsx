@@ -34,25 +34,8 @@ const MainSection: React.FC = () => {
   const [suggestedWeight, setSuggestedWeight] = useState<string>("");
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const numbersArray = [
-      "0",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      ".",
-      "Backspace",
-    ];
-    // console.log(keyCode);
-    // console.log(numbersArray.includes(keyCode));
     const { name, value } = e.target;
-    if (numbersArray.includes(keyCode))
-      setBmi((prev) => ({ ...prev, [name]: Number(value) }));
+    setBmi((prev) => ({ ...prev, [name]: Number(value) }));
   };
   const onRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, id } = e.target;
@@ -173,7 +156,7 @@ const MainSection: React.FC = () => {
           your overall health and well-being.
         </p>
       </div>
-      <form className="bg-white p-6 sm:p-8   rounded-2xl lg:col-start-2 lg:row-start-2">
+      <form className="bg-white p-6 sm:p-8 rounded-2xl lg:col-start-2 lg:row-start-2">
         <h3 className="sm:text-start">Enter your details below</h3>
         <div className="flex justify-between py-6 sm:py-8 sm:gap-x-6">
           <div className="flex w-full">
@@ -209,23 +192,27 @@ const MainSection: React.FC = () => {
             </label>
           </div>
         </div>
-        <div className="sm:flex sm:justify-between sm:gap-x-6">
+        <div
+          className={`sm:flex sm:justify-between ${
+            bmi.metric === "metric" ? "" : " lg:block"
+          } sm:gap-x-6`}
+        >
           <div className="w-full">
             <h3 className="capitalize text-Body-S text-start mb-2 text-[#5E6E85]">
               height
             </h3>
-            <div className="flex w-full gap-x-4 mb-4 ">
-              <div className="relative h-full">
+            <div className="flex w-full gap-x-4 mb-4 bg">
+              <div className="relative w-full ">
                 <input
                   onChange={onInputChange}
                   onKeyDown={(e) => setKeyCode(e.key)}
                   onFocus={(e) => e.target.select()}
-                  type="text"
+                  type="number"
                   name="cmFt"
                   placeholder="0"
                   maxLength={5}
                   value={bmi.cmFt}
-                  className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
+                  className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full 
              focus:border-blue active:border-blue"
                 />
                 <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
@@ -233,12 +220,12 @@ const MainSection: React.FC = () => {
                 </p>
               </div>
               {bmi.metric === "imperial" && (
-                <div className="relative h-full">
+                <div className="relative w-full">
                   <input
                     onChange={onInputChange}
                     onKeyDown={(e) => setKeyCode(e.key)}
                     onFocus={(e) => e.target.select()}
-                    type="text"
+                    type="number"
                     name="in"
                     placeholder="0"
                     value={bmi.in}
@@ -257,12 +244,12 @@ const MainSection: React.FC = () => {
               weight
             </h3>
             <div className="flex w-full gap-x-4 mb-6">
-              <div className="relative h-full">
+              <div className="relative w-full">
                 <input
                   onChange={onInputChange}
                   onKeyDown={(e) => setKeyCode(e.key)}
                   onFocus={(e) => e.target.select()}
-                  type="text"
+                  type="number"
                   name="kgSt"
                   placeholder="0"
                   value={bmi.kgSt}
@@ -274,12 +261,12 @@ const MainSection: React.FC = () => {
                 </p>
               </div>
               {bmi.metric === "imperial" && (
-                <div className="relative h-full">
+                <div className="relative w-full">
                   <input
                     onChange={onInputChange}
                     onKeyDown={(e) => setKeyCode(e.key)}
                     onFocus={(e) => e.target.select()}
-                    type="text"
+                    type="number"
                     name="lbs"
                     placeholder="0"
                     value={bmi.lbs}
@@ -309,7 +296,9 @@ const MainSection: React.FC = () => {
                 <h5 className="text-white text-Body-M-Bold mb-2">
                   Your BMI is...
                 </h5>
-                <p className="text-white text-L mb-6">{userBmi.toFixed(1)}</p>
+                <p className="text-white text-L lg:text-XL mb-6 lg:mr-4">
+                  {userBmi.toFixed(1)}
+                </p>
               </div>
               <p className="text-white text-Body-S max-w-[267px]">
                 Your BMI suggests you`re a {bmiStatus}. Your ideal weight is

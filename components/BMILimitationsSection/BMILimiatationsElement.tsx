@@ -18,21 +18,19 @@ const BMILimiatationsElement: React.FC<BMILimiatationsElementProps> = ({
   return (
     <div
       className={`mb-10 sm:mb-14 px-6 ${title === "Race" ? "" : "sm:px-8"} ${
-        title === "Age"
-          ? " lgs:ml-[clamp(1rem,_19vw,_25rem)] lg:basis-[730px]"
-          : "lg:basis-[365px]"
+        title === "Age" ? " xl:basis-[730px]" : " xl:basis-[365px] "
       }  ${
-        title === "Pregnancy" && " lg:ml-[clamp(1rem,_10vw,_12.4375rem)]"
+        title === "Pregnancy" && " xl:ml-[clamp(1rem,_10vw,_12.4375rem)]"
       } sm:basis-[335px] flex`}
     >
       {title === "Age" && (
         <Image
           src={CurvedLine}
           alt="curved Line"
-          className="hidden lg:block ml-[140px] mr-[150px] mb-9 "
+          className="hidden xl:block ml-[140px] mr-[150px] mb-9"
         />
       )}
-      <div className="lg:basis-[365px]">
+      <div className="xl:basis-[365px]">
         <div className="flex items-center mb-4 ">
           <Image
             src={image}
