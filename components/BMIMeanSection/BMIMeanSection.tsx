@@ -8,7 +8,7 @@ import data from "./data.json";
 type BMIMeanSectionProps = {};
 const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
   return (
-    <section className="px-6 sm:px-10 mb-32 sm:mt-24 max-w-[1440px] mx-auto lg:flex lg:flex-col lg:px-[clamp(2.5rem,_10vw,_8.75rem)] ">
+    <section className="px-6 sm:px-10 mb-32 lg:mb-[11.5rem] sm:mt-24 max-w-[1440px] mx-auto lg:flex lg:flex-col lg:px-[clamp(2.5rem,_10vw,_8.75rem)] ">
       <div className="sm:flex mb-32 sm:items-center lg:gap-x-[clamp(5rem,_10vw,_131px)] lg:justify-between">
         <Image
           src={ManEating}
