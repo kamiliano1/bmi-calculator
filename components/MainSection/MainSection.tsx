@@ -121,11 +121,10 @@ const MainSection: React.FC = () => {
         alt="page logo"
         className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[64px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[3.75rem]"
       />
-      <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2">
+      <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2 lg:mt-">
         <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none">
           Body Mass Index Calculator
         </h1>
-
         <p className="mb-12">
           Better understand your weight in relation to your height using our
           body mass index (BM) calculator. While BMI is not the sole determinant
@@ -170,7 +169,7 @@ const MainSection: React.FC = () => {
           </div>
         </div>
         <div
-          className={`sm:flex sm:justify-between ${
+          className={`sm:flex sm:justify-between lg:mb-10 ${
             bmi.metric === "metric" ? "" : " lg:block"
           } sm:gap-x-6`}
         >
@@ -178,7 +177,7 @@ const MainSection: React.FC = () => {
             <h3 className="capitalize text-Body-S text-start mb-2 text-[#5E6E85]">
               height
             </h3>
-            <div className="flex w-full gap-x-4 mb-4 bg">
+            <div className="flex w-full gap-x-4 mb-4 sm:mb-8">
               <div className="relative w-full ">
                 <input
                   onChange={onInputChange}

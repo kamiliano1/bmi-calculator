@@ -13,12 +13,11 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
         <Image
           src={ManEating}
           alt="man eating sushi"
-          // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-auto lg:h-auto lg:ml-0 lg:py-0"
-          className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[468px] lg:h-[533px]  lg:ml-0 lg:py-0 lg:mx-0"
-          // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-full  lg:ml-0 lg:py-0 lg:mx-0"
-          // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[578px] lg:h-[633px] lg:ml-0 lg:py-0 lg:mx-0"
+          className="mx-auto w-full max-w-[311px] sm:max-w-[468px] sm:ml-[-6rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px]"
+          // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[468px] lg:h-[533px]  lg:ml-0 lg:py-0 lg:mx-0"
         />
-        <div className="sm:max-w-[331px] lg:max-w-[465px]">
+        {/* <div className="sm:w-[331px] lg:max-w-[465px] bg-black"> */}
+        <div className="w-full max-w-[465px]">
           <Image
             src={CurvedLine}
             alt="curved Line"
