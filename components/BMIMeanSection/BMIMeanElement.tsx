@@ -21,7 +21,6 @@ const BMIMeanElement: React.FC<BMIMeanElementProps> = ({
         className="mb-8 sm:mb-0 "
         width={64}
         height={64}
-        loading="eager"
       />
       <div>
         <h3 className="mb-6">{title}</h3>

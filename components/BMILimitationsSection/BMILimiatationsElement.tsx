@@ -38,7 +38,6 @@ const BMILimiatationsElement: React.FC<BMILimiatationsElementProps> = ({
             className="mr-4"
             width={32}
             height={32}
-            loading="eager"
           />
           <h4 className="">{title}</h4>
         </div>
