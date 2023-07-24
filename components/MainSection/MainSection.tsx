@@ -29,7 +29,6 @@ const MainSection: React.FC = () => {
     metric: "metric",
   });
   const [userBmi, setUserBmi] = useState<number>(0);
-  const [keyCode, setKeyCode] = useState<string>("");
   const [bmiStatus, setBmiStatus] = useState<BmiStatusType>("underweight");
   const [suggestedWeight, setSuggestedWeight] = useState<string>("");
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
@@ -60,28 +59,6 @@ const MainSection: React.FC = () => {
   const roundNumber = (num: number, round = 1e2) => {
     return Math.round(num * round) / round;
   };
-  // const suggestedWeightRange = (metricType: "metric" | "imperial") => {
-  //   // console.log(bmiStatus, metricType);
-  //   if (metricType === "metric") {
-  //     const minValue = roundNumber(18.5 * (bmi.cmFt / 100) ** 2);
-  //     const maxValue = roundNumber(24.9 * (bmi.cmFt / 100) ** 2);
-  //     setSuggestedWeight(`${minValue}kgs - ${maxValue}kgs.`);
-  //     return;
-  //   }
-  //   const inches = Number(bmi.cmFt) * 12 + Number(bmi.in);
-  //   const minValue = (18.5 * inches ** 2) / 703;
-  //   const maxValue = (24.9 * inches ** 2) / 703;
-  //   const feetsMin = Math.floor(minValue / 2.54 / 12);
-  //   const inchesMin = roundNumber(minValue / 2.54 - feetsMin * 12);
-  //   const feetsMax = Math.floor(maxValue / 2.54 / 12);
-  //   const inchesMax = roundNumber(maxValue / 2.54 - feetsMax * 12);
-
-  //   setSuggestedWeight(
-  //     `${feetsMin}st ${inchesMin}lbs - ${feetsMax}st ${inchesMax}lbs.`
-  //   );
-  // };
-
-  // Healthy weight: BMI 18.5 to 24.9
   useEffect(() => {
     if (bmi.metric === "metric") {
       setUserBmi(bmi.kgSt / (bmi.cmFt / 100) ** 2);
@@ -138,7 +115,7 @@ const MainSection: React.FC = () => {
 
   return (
     <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
-      <div className="absolute w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[630px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
+      <div className="absolute w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[737px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
         alt="page logo"
@@ -156,7 +133,7 @@ const MainSection: React.FC = () => {
           your overall health and well-being.
         </p>
       </div>
-      <form className="bg-white p-6 sm:p-8 rounded-2xl lg:col-start-2 lg:row-start-2">
+      <form className="bg-white p-6 sm:p-8 rounded-2xl lg:col-start-2 lg:row-start-2 mt-[-2rem]">
         <h3 className="sm:text-start">Enter your details below</h3>
         <div className="flex justify-between py-6 sm:py-8 sm:gap-x-6">
           <div className="flex w-full">
@@ -205,7 +182,6 @@ const MainSection: React.FC = () => {
               <div className="relative w-full ">
                 <input
                   onChange={onInputChange}
-                  onKeyDown={(e) => setKeyCode(e.key)}
                   onFocus={(e) => e.target.select()}
                   type="number"
                   name="cmFt"
@@ -223,7 +199,6 @@ const MainSection: React.FC = () => {
                 <div className="relative w-full">
                   <input
                     onChange={onInputChange}
-                    onKeyDown={(e) => setKeyCode(e.key)}
                     onFocus={(e) => e.target.select()}
                     type="number"
                     name="in"
@@ -247,7 +222,6 @@ const MainSection: React.FC = () => {
               <div className="relative w-full">
                 <input
                   onChange={onInputChange}
-                  onKeyDown={(e) => setKeyCode(e.key)}
                   onFocus={(e) => e.target.select()}
                   type="number"
                   name="kgSt"
@@ -264,7 +238,6 @@ const MainSection: React.FC = () => {
                 <div className="relative w-full">
                   <input
                     onChange={onInputChange}
-                    onKeyDown={(e) => setKeyCode(e.key)}
                     onFocus={(e) => e.target.select()}
                     type="number"
                     name="lbs"
