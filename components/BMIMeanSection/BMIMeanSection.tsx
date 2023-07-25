@@ -16,7 +16,7 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
         <Image
           src={ManEating}
           alt="man eating sushi"
-          className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-6rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[500px]"
+          className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-6rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[540px]"
           // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[468px] lg:h-[533px]  lg:ml-0 lg:py-0 lg:mx-0"
         />
         {/* <div className="sm:w-[331px] lg:max-w-[465px] bg-black"> */}
@@ -24,7 +24,7 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
           <Image
             src={CurvedLine}
             alt="curved Line"
-            className="hidden lg:block ml-auto mb-7 mt-[-3.25rem] mr-[-1rem]"
+            className="hidden lg:block ml-auto mb-6 mt-[-3.25rem] mr-[-1rem]"
           />
           <h2 className="text-XM mb-8 lg:text-L">What your BMI result means</h2>
           <p className="text-Body-M ">
