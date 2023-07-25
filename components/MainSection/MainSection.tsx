@@ -114,7 +114,7 @@ const MainSection: React.FC = () => {
   };
 
   return (
-    <main className="px-6 sm:px-10 text-center lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
+    <main className="px-6 sm:px-10 text-center lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[repeat(2,_max-content)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
       <div className="absolute w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[737px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
@@ -125,14 +125,14 @@ const MainSection: React.FC = () => {
         <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none lg:mb-[2.1875rem]">
           Body Mass Index Calculator
         </h1>
-        <p className="mb-12">
+        <p className="mb-12 lg:mb-0">
           Better understand your weight in relation to your height using our
           body mass index (BM) calculator. While BMI is not the sole determinant
           of a healthy weight, it offers a valuable starting point to evaluate
           your overall health and well-being.
         </p>
       </div>
-      <form className="bg-white p-6 sm:p-8 rounded-2xl lg:col-start-2 lg:row-start-2 mt-[-2rem]">
+      <form className="bg-white p-6 sm:p-8 rounded-2xl lg:col-start-2 lg:row-start-2 ">
         <h2 className="sm:text-start text-M">Enter your details below</h2>
         <div className="flex justify-between py-6 sm:py-8 sm:gap-x-6">
           <div className="flex w-full">
