@@ -119,7 +119,7 @@ const MainSection: React.FC = () => {
       <Image
         src={Logo}
         alt="page logo"
-        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[64px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[3.75rem]"
+        className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[64px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[1.75rem]"
       />
       <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2 lg:mt-">
         <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none lg:mb-[2.1875rem]">
