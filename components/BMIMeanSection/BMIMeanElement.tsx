@@ -14,11 +14,11 @@ const BMIMeanElement: React.FC<BMIMeanElementProps> = ({
   alt,
 }) => {
   return (
-    <div className="sm:flex sm:items-center sm:gap-10 lg:flex-col lg:gap-8 lg:items-start lg:basis-[365px] lg:mr-8 lg:mx-auto">
+    <div className="sm:flex sm:items-center sm:gap-10 lg:gap-[2.8125rem] lg:flex-col  lg:items-start lg:basis-[365px] lg:mr-8 lg:mx-auto">
       <Image
         src={image}
         alt={alt}
-        className="mb-8 sm:mb-0 lg:mb-[2.8125rem]"
+        className="mb-8 sm:mb-0 "
         width={64}
         height={64}
       />
