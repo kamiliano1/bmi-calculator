@@ -24,7 +24,7 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
           <Image
             src={CurvedLine}
             alt="curved Line"
-            className="hidden lg:absolute lg:block right-0 top-[-4rem] "
+            className="hidden lg:absolute lg:block right-[-2rem] top-[-4rem]"
           />
           <h2 className="text-XM mb-8 lg:text-L">What your BMI result means</h2>
           <p className="text-Body-M lg:mb-10">

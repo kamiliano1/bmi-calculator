@@ -31,7 +31,7 @@ const BMILimiatationsElement: React.FC<BMILimiatationsElementProps> = ({
         />
       )}
       <div className="xl:basis-[365px]">
-        <div className="flex items-center mb-4 ">
+        <div className="flex items-center mb-4">
           <Image
             src={image}
             alt={alt}
