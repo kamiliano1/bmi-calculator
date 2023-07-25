@@ -114,7 +114,7 @@ const MainSection: React.FC = () => {
   };
 
   return (
-    <main className="px-6 sm:px-10 text-center mt-2 lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
+    <main className="px-6 sm:px-10 text-center lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[minmax(0,_1fr)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative ">
       <div className="absolute w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[737px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
       <Image
         src={Logo}
@@ -122,7 +122,7 @@ const MainSection: React.FC = () => {
         className="mx-auto py-6 w-[40px] sm:pb-10 sm:pt-8 lg:w-[64px] lg:mx-0 lg:pt-[4.6875rem] lg:pb-[3.75rem]"
       />
       <div className="lg:text-start lg:max-w-[470px] lg:col-start-1 lg:row-start-2 lg:mt-">
-        <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none">
+        <h1 className="mb-6 text-L lg:text-XL max-w-[11ch] mx-auto lg:max-w-none lg:mb-[2.1875rem]">
           Body Mass Index Calculator
         </h1>
         <p className="mb-12">
@@ -169,16 +169,16 @@ const MainSection: React.FC = () => {
           </div>
         </div>
         <div
-          className={`sm:flex sm:justify-between lg:mb-10 ${
+          className={`sm:flex sm:justify-between mb-6 sm:mb-8 ${
             bmi.metric === "metric" ? "" : " lg:block"
           } sm:gap-x-6`}
         >
-          <div className="w-full">
+          <div className="w-full mb-4 sm:mb-0">
             <h3 className="capitalize text-Body-S text-start mb-2 text-[#5E6E85]">
               height
             </h3>
-            <div className="flex w-full gap-x-4 mb-4 sm:mb-8">
-              <div className="relative w-full ">
+            <div className="flex w-full gap-x-4">
+              <div className="relative w-full">
                 <input
                   onChange={onInputChange}
                   onFocus={(e) => e.target.select()}
@@ -187,10 +187,10 @@ const MainSection: React.FC = () => {
                   placeholder="0"
                   maxLength={5}
                   value={bmi.cmFt}
-                  className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full 
+                  className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full 
              focus:border-blue active:border-blue"
                 />
-                <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
+                <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
                   {bmi.metric === "metric" ? "cm" : "ft"}
                 </p>
               </div>
@@ -203,10 +203,10 @@ const MainSection: React.FC = () => {
                     name="in"
                     placeholder="0"
                     value={bmi.in}
-                    className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
+                    className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                   />
-                  <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
+                  <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
                     in
                   </p>
                 </div>
@@ -217,7 +217,7 @@ const MainSection: React.FC = () => {
             <h3 className="capitalize text-Body-S text-start mb-2 text-[#5E6E85]">
               weight
             </h3>
-            <div className="flex w-full gap-x-4 mb-6">
+            <div className="flex w-full gap-x-4 ">
               <div className="relative w-full">
                 <input
                   onChange={onInputChange}
@@ -226,10 +226,10 @@ const MainSection: React.FC = () => {
                   name="kgSt"
                   placeholder="0"
                   value={bmi.kgSt}
-                  className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
+                  className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                 />
-                <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
+                <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
                   {bmi.metric === "metric" ? "kg" : "st"}
                 </p>
               </div>
@@ -242,10 +242,10 @@ const MainSection: React.FC = () => {
                     name="lbs"
                     placeholder="0"
                     value={bmi.lbs}
-                    className="rounded-xl border-[1px] border-[#D8E2E7] py-3 pl-6 text-gunMetal text-M w-full
+                    className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                   />
-                  <p className="absolute text-M text-blue top-[calc(0px_+_11px)] right-[1.5rem]">
+                  <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
                     lbs
                   </p>
                 </div>
@@ -253,7 +253,6 @@ const MainSection: React.FC = () => {
             </div>
           </div>
         </div>
-
         <div className="bg-[linear-gradient(90deg,_#345FF6_0%,_#587DFF_100%)] sm:rounded-r-full text-white p-8 text-start rounded-2xl sm:flex items-center justify-between">
           {isEmpty ? (
             <div>
