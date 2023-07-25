@@ -12,11 +12,11 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
       className="px-6 sm:px-10 mb-32 lg:mb-[13.5rem] sm:mt-24 max-w-[1440px] mx-auto lg:flex lg:flex-col lg:px-[clamp(2.5rem,_10vw,_8.75rem)] lg:mt-[4.0625rem]"
       role="complementary"
     >
-      <div className="sm:flex mb-32 lg:mb-[13.5rem] sm:items-center lg:gap-x-[clamp(5rem,_10vw,_131px)] lg:justify-between">
+      <div className="sm:flex mb-32 lg:mb-[10.5rem] sm:items-center lg:items-end lg:gap-x-[clamp(5rem,_10vw,_131px)] lg:justify-between relative bg">
         <Image
           src={ManEating}
           alt="man eating sushi"
-          className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-6rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[540px]"
+          className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-6rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[560px]"
           // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[468px] lg:h-[533px]  lg:ml-0 lg:py-0 lg:mx-0"
         />
         {/* <div className="sm:w-[331px] lg:max-w-[465px] bg-black"> */}
@@ -24,10 +24,10 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
           <Image
             src={CurvedLine}
             alt="curved Line"
-            className="hidden lg:block ml-auto mb-6 mt-[-3.25rem] mr-[-1rem]"
+            className="hidden lg:absolute lg:block right-0 top-[-4rem] "
           />
           <h2 className="text-XM mb-8 lg:text-L">What your BMI result means</h2>
-          <p className="text-Body-M ">
+          <p className="text-Body-M lg:mb-10">
             A BMI range of 18.5 to 24.9 is considered a `healthy weight.`
             Maintaining a healthy weight may lower your chances of experiencing
             health issues later on, such as obesity and type 2 diabetes. Aim for
