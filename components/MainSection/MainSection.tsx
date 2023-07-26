@@ -1,10 +1,9 @@
 "use client";
-import RadioButton from "@/components/Layout/RadioButton";
 import TextField from "@/components/Layout/TextField";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 import Logo from "../../public/assets/images/logo.svg";
 import Image from "next/image";
-
+import RadioButton from "@/components/Layout/RadioButton";
 type BmiType = {
   cmFt: number;
   in: number;
@@ -15,17 +14,12 @@ type BmiType = {
 
 type BmiStatusType = "underweight" | "healthy weight" | "overweight" | "obese";
 
-// type suggestedWeightType = {
-//   minValue: string;
-//   maxValue: string;
-// };
-
 const MainSection: React.FC = () => {
   const [bmi, setBmi] = useState<BmiType>({
-    cmFt: 0,
-    in: 0,
-    kgSt: 0,
-    lbs: 0,
+    cmFt: NaN,
+    in: NaN,
+    kgSt: NaN,
+    lbs: NaN,
     metric: "metric",
   });
   const [userBmi, setUserBmi] = useState<number>(0);
@@ -34,10 +28,10 @@ const MainSection: React.FC = () => {
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
   const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setBmi((prev) => ({ ...prev, [name]: Number(value) }));
+    setBmi((prev) => ({ ...prev, [name]: value }));
   };
-  const onRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, id } = e.target;
+
+  const onRadioChange = (name: string, id: string) => {
     setBmi((prev) => ({ ...prev, [name]: id }));
     if (bmi.metric === "imperial") {
       setBmi((prev) => ({
@@ -86,9 +80,20 @@ const MainSection: React.FC = () => {
       setBmiStatus("obese");
     }
     if (
-      (bmi.metric === "metric" && (bmi.cmFt === 0 || bmi.kgSt === 0)) ||
+      (bmi.metric === "metric" &&
+        (bmi.cmFt === 0 ||
+          bmi.kgSt === 0 ||
+          Number.isNaN(bmi.cmFt) ||
+          Number.isNaN(bmi.kgSt))) ||
       (bmi.metric === "imperial" &&
-        (bmi.cmFt === 0 || bmi.kgSt === 0 || bmi.in === 0 || bmi.lbs === 0))
+        (bmi.cmFt === 0 ||
+          bmi.kgSt === 0 ||
+          bmi.in === 0 ||
+          bmi.lbs === 0 ||
+          Number.isNaN(bmi.cmFt) ||
+          Number.isNaN(bmi.kgSt) ||
+          Number.isNaN(bmi.in) ||
+          Number.isNaN(bmi.lbs)))
     ) {
       setIsEmpty(true);
       return;
@@ -112,7 +117,6 @@ const MainSection: React.FC = () => {
   const fromImperialToMetricWeight = (st: number, lbs: number) => {
     return roundNumber((Number(st) * 14 + Number(lbs)) / 2.2);
   };
-
   return (
     <main className="px-6 sm:px-10 text-center lg:grid lg:grid-cols-[repeat(2,_minmax(0,_568px))] lg:grid-rows-[repeat(2,_max-content)] lg:justify-center lg:gap-x-8 lg:items-center max-w-[1440px] mx-auto relative lg:h-[737px]">
       <div className="absolute w-full bg-[linear-gradient(315deg,_#D6E6FE_0%,_rgba(214,_252,_254,_0.00)_100%)] h-[620px] lg:h-[737px] rounded-[0px_0px_35px_35px] top-0 left-0 lg:w-[978px] z-[-1]"></div>
@@ -135,38 +139,16 @@ const MainSection: React.FC = () => {
       <form className="bg-white p-6 sm:p-8 rounded-2xl lg:col-start-2 lg:row-start-2 ">
         <h2 className="sm:text-start text-M">Enter your details below</h2>
         <div className="flex justify-between py-6 sm:py-8 sm:gap-x-6">
-          <div className="flex w-full">
-            <input
-              type="radio"
-              id="metric"
-              name="metric"
-              className="mr-4 accent-blue w-[31px] aspect-square cursor-pointer"
-              onChange={onRadioChange}
-              checked={bmi.metric === "metric"}
-            />
-            <label
-              htmlFor="metric"
-              className="text-Body-M-Bold capitalize cursor-pointer"
-            >
-              metric
-            </label>
-          </div>
-          <div className="flex w-full">
-            <input
-              type="radio"
-              id="imperial"
-              name="metric"
-              className="mr-4 accent-blue w-[31px] cursor-pointer"
-              onChange={onRadioChange}
-              checked={bmi.metric === "imperial"}
-            />
-            <label
-              htmlFor="imperial"
-              className="text-Body-M-Bold capitalize cursor-pointer"
-            >
-              imperial
-            </label>
-          </div>
+          <RadioButton
+            type="metric"
+            bmiUnit={bmi.metric}
+            onClick={onRadioChange}
+          />
+          <RadioButton
+            type="imperial"
+            bmiUnit={bmi.metric}
+            onClick={onRadioChange}
+          />
         </div>
         <div
           className={`sm:flex sm:justify-between mb-6 sm:mb-8 ${
@@ -186,7 +168,7 @@ const MainSection: React.FC = () => {
                   name="cmFt"
                   placeholder="0"
                   maxLength={5}
-                  value={bmi.cmFt}
+                  value={Number.isNaN(bmi.cmFt) ? "" : bmi.cmFt}
                   className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full 
              focus:border-blue active:border-blue"
                 />
@@ -202,7 +184,7 @@ const MainSection: React.FC = () => {
                     type="number"
                     name="in"
                     placeholder="0"
-                    value={bmi.in}
+                    value={Number.isNaN(bmi.in) ? "" : bmi.in}
                     className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                   />
@@ -225,7 +207,7 @@ const MainSection: React.FC = () => {
                   type="number"
                   name="kgSt"
                   placeholder="0"
-                  value={bmi.kgSt}
+                  value={Number.isNaN(bmi.kgSt) ? "" : bmi.kgSt}
                   className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                 />
@@ -241,7 +223,7 @@ const MainSection: React.FC = () => {
                     type="number"
                     name="lbs"
                     placeholder="0"
-                    value={bmi.lbs}
+                    value={Number.isNaN(bmi.lbs) ? "" : bmi.lbs}
                     className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
              focus:border-blue active:border-blue"
                   />
