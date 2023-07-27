@@ -18,7 +18,7 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
           alt="man eating sushi"
           className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-8rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[560px]"
         />
-        <div className="w-full max-w-[465px] min-w-[250px]">
+        <div className="w-full max-w-[465px] min-w-[250px] mx-auto">
           <Image
             src={CurvedLine}
             alt="curved Line"
