@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/kamiliano1/bmi-calculator](https://github.com/kamiliano1/bmi-calculator)
-- Live Site URL: [Add live site URL here](https://bmi-calculator-orpin.vercel.app/)
+- Live Site URL: [https://bmi-calculator-orpin.vercel.app/](https://bmi-calculator-orpin.vercel.app/)
 
 ## My process
 
