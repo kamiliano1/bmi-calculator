@@ -49,35 +49,3 @@ const RadioButton: React.FC<RadioButtonProps> = ({
   );
 };
 export default RadioButton;
-
-{
-  /* <input
-type="radio"
-name="topping"
-value="Regular"
-id="regular"
-checked={topping === "Regular"}
-onChange={onOptionChange}
-/>
-<label htmlFor="regular">Regular</label> */
-}
-
-// <input
-// type="radio"
-// name="topping"
-// value="Medium"
-// id="medium"
-// checked={topping === "Medium"}
-// onChange={onOptionChange}
-// />
-// <label htmlFor="medium">Medium</label>
-
-// <input
-// type="radio"
-// name="topping"
-// value="Large"
-// id="large"
-// checked={topping === "Large"}
-// onChange={onOptionChange}
-// />
-// <label htmlFor="large">Large</label>

@@ -1,9 +1,8 @@
 "use client";
-import TextField from "@/components/Layout/TextField";
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
-import Logo from "../../public/assets/images/logo.svg";
-import Image from "next/image";
 import RadioButton from "@/components/Layout/RadioButton";
+import Image from "next/image";
+import { ChangeEvent, useEffect, useState } from "react";
+import Logo from "../../public/assets/images/logo.svg";
 type BmiType = {
   cmFt: number;
   in: number;
@@ -171,7 +170,7 @@ const MainSection: React.FC = () => {
                   placeholder="0"
                   maxLength={5}
                   value={Number.isNaN(bmi.cmFt) ? "" : bmi.cmFt}
-                  className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full 
+                  className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full hover:border-blue
              focus:border-blue active:border-blue"
                 />
                 <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
@@ -187,7 +186,7 @@ const MainSection: React.FC = () => {
                     name="in"
                     placeholder="0"
                     value={Number.isNaN(bmi.in) ? "" : bmi.in}
-                    className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
+                    className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full hover:border-blue
              focus:border-blue active:border-blue"
                   />
                   <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
@@ -210,7 +209,7 @@ const MainSection: React.FC = () => {
                   name="kgSt"
                   placeholder="0"
                   value={Number.isNaN(bmi.kgSt) ? "" : bmi.kgSt}
-                  className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
+                  className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full hover:border-blue
              focus:border-blue active:border-blue"
                 />
                 <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
@@ -226,7 +225,7 @@ const MainSection: React.FC = () => {
                     name="lbs"
                     placeholder="0"
                     value={Number.isNaN(bmi.lbs) ? "" : bmi.lbs}
-                    className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full
+                    className="rounded-xl border-[1px] border-[#D8E2E7] py-5 pl-6 text-gunMetal text-M w-full hover:border-blue
              focus:border-blue active:border-blue"
                   />
                   <p className="absolute text-M text-blue top-[calc(0px_+_17px)] right-[1.5rem]">
