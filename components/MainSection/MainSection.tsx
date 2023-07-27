@@ -31,7 +31,8 @@ const MainSection: React.FC = () => {
     setBmi((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onRadioChange = (name: string, id: string) => {
+  const onRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, id } = e.target;
     setBmi((prev) => ({ ...prev, [name]: id }));
     if (bmi.metric === "imperial") {
       setBmi((prev) => ({
@@ -50,6 +51,7 @@ const MainSection: React.FC = () => {
       }));
     }
   };
+
   const roundNumber = (num: number, round = 1e2) => {
     return Math.round(num * round) / round;
   };
@@ -142,12 +144,12 @@ const MainSection: React.FC = () => {
           <RadioButton
             type="metric"
             bmiUnit={bmi.metric}
-            onClick={onRadioChange}
+            onChange={onRadioChange}
           />
           <RadioButton
             type="imperial"
             bmiUnit={bmi.metric}
-            onClick={onRadioChange}
+            onChange={onRadioChange}
           />
         </div>
         <div

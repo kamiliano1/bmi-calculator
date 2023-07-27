@@ -16,10 +16,8 @@ const BMIMeanSection: React.FC<BMIMeanSectionProps> = () => {
         <Image
           src={ManEating}
           alt="man eating sushi"
-          className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-6rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[560px]"
-          // className="mx-auto py-6 h-[354px] w-[311px] sm:w-[360px] sm:h-[411px] sm:ml-[-6rem] lg:w-[468px] lg:h-[533px]  lg:ml-0 lg:py-0 lg:mx-0"
+          className="mx-auto max-w-[311px] sm:max-w-[468px] sm:ml-[-8rem] py-6 lg:ml-0 lg:py-0 lg:mx-0 lg:h-[533px] lg:max-w-[560px]"
         />
-        {/* <div className="sm:w-[331px] lg:max-w-[465px] bg-black"> */}
         <div className="w-full max-w-[465px] min-w-[250px]">
           <Image
             src={CurvedLine}
