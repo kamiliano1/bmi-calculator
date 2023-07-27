@@ -20,8 +20,7 @@ const BMILimiatationsElement: React.FC<BMILimiatationsElementProps> = ({
       className={`mb-10 sm:mb-14 px-6 ${title === "Race" ? "" : "sm:px-8"} ${
         title === "Age" ? " xl:basis-[750px] xl:mr-8" : " xl:basis-[365px] "
       }  ${
-        title === "Pregnancy" &&
-        " xl:ml-[clamp(1rem,_10vw,_12.4375rem)] xl:mr-8"
+        title === "Pregnancy" && " xl:ml-[12.4375rem] xl:mr-8"
       } sm:basis-[335px] flex`}
     >
       {title === "Age" && (
